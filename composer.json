@@ -1,5 +1,5 @@
 {
-    "name": "dia-nz/silverstripe-advancedworkflow",
+    "name": "dia-nz/advancedworkflow",
     "description": "Adds configurable workflow support to the CMS, with a GUI for creating custom workflow definitions.",
     "type": "silverstripe-module",
     "keywords": [
