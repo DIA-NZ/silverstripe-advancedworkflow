@@ -7,9 +7,9 @@ use SilverStripe\Admin\LeftAndMain;
 
 define('ADVANCED_WORKFLOW_DIR', basename(dirname(__FILE__)));
 
-if(ADVANCED_WORKFLOW_DIR != 'silverstripe-advancedworkflow') {
+if(ADVANCED_WORKFLOW_DIR != 'advancedworkflow') {
 	throw new Exception(
-		"The advanced workflow module must be in a directory named 'silverstripe-advancedworkflow', not " . ADVANCED_WORKFLOW_DIR
+		"The advanced workflow module must be in a directory named 'advancedworkflow', not " . ADVANCED_WORKFLOW_DIR
 	);
 }
 
