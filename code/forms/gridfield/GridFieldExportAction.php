@@ -9,7 +9,12 @@
 use SilverStripe\Forms\GridField\GridField_ColumnProvider;
 use SilverStripe\Forms\GridField\GridField_ActionProvider;
 use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridField_FormAction;
 use SilverStripe\View\ArrayData;
+use SilverStripe\Security\Permission;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Config\Config;
+use SilverStripe\Control\Controller;
 
 class GridFieldExportAction implements GridField_ColumnProvider, GridField_ActionProvider {
 	
@@ -97,7 +102,7 @@ class GridFieldExportAction implements GridField_ColumnProvider, GridField_Actio
 			'Link' => Controller::join_links($segment1, 'admin', $segment2 , $segment3, 'export', $record->ID)
 		));
 		
-		return $field->Field()->renderWith('GridField_ExportAction', $fields);
+		return $field->Field()->renderWith('Includes/GridField_ExportAction', $fields);
 	}
 	
 	/**

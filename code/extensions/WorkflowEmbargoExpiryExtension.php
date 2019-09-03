@@ -17,6 +17,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\Control\Controller;
 use SilverStripe\Versioned\Versioned;
 use Symbiote\QueuedJobs\DataObjects\QueuedJobDescriptor;
+use SilverStripe\Core\Injector\Injector;
 
 class WorkflowEmbargoExpiryExtension extends DataExtension {
 
@@ -205,7 +206,7 @@ class WorkflowEmbargoExpiryExtension extends DataExtension {
 
 		// Create a new job with the specified schedule
 		$job = new WorkflowPublishTargetJob($this->owner, 'publish');
-		$this->owner->PublishJobID = Injector::inst()->get('QueuedJobService')
+		$this->owner->PublishJobID = Injector::inst()->get('Symbiote\QueuedJobs\Services\QueuedJobService')
 				->queueJob($job, $when ? date('Y-m-d H:i:s', $when) : null);
 	}
 

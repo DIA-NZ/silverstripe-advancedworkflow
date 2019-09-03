@@ -6,6 +6,7 @@
  */
 
 use SilverStripe\Control\RequestHandler;
+use SilverStripe\Control\Controller;
 
 class WorkflowFieldTransitionController extends RequestHandler {
 

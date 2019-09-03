@@ -9,6 +9,7 @@
  */
 
 use SilverStripe\Admin\LeftAndMainExtension;
+use SilverStripe\View\Requirements;
 
 class AdvancedWorkflowExtension extends LeftAndMainExtension {
 	
@@ -40,7 +41,7 @@ class AdvancedWorkflowExtension extends LeftAndMainExtension {
 	 *
 	 * @param Form $form
 	 */
-	public function updateEditForm(Form $form) {
+	public function updateEditForm(SilverStripe\Forms\Form $form) {
 		Requirements::javascript(ADVANCED_WORKFLOW_DIR . '/javascript/advanced-workflow-cms.js');
 		$svc    = singleton('WorkflowService');
 		$p      = $form->getRecord();

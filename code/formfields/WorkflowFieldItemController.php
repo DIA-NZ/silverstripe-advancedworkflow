@@ -5,6 +5,9 @@
  * @package silverstripe-advancedworkflow
  */
 use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\FieldList;
 
 class WorkflowFieldItemController extends Controller {
 

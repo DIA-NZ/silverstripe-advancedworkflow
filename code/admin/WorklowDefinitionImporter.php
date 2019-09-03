@@ -6,6 +6,9 @@
  * @license BSD License (http://silverstripe.org/bsd-license/)
  * @package advancedworkflow
  */
+
+use SilverStripe\ORM\DataObject;
+
 class WorkflowDefinitionImporter {
 	
 	/**

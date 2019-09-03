@@ -15,6 +15,16 @@
  */
 
 use SilverStripe\ORM\DataObject;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\TabSet;
+use SilverStripe\Forms\TextField;
+use SilverStripe\Forms\TextareaField;
+use SilverStripe\Forms\CheckboxField;
+use SilverStripe\Forms\CheckboxSetField;
+use SilverStripe\Forms\TreeMultiselectField;
+use SilverStripe\Forms\ReadonlyField;
+use SilverStripe\Forms\DropdownField;
+use SilverStripe\Security\Member;
 
 class WorkflowTransition extends DataObject {
 
@@ -129,7 +139,7 @@ class WorkflowTransition extends DataObject {
 			_t('WorkflowTransition.TabTitle', 'Restrict to users')
 		);
 		$fields->addFieldToTab('Root.RestrictToUsers', new CheckboxSetField('Users', _t('WorkflowDefinition.USERS', 'Restrict to Users'), $members));
-		$fields->addFieldToTab('Root.RestrictToUsers', new TreeMultiselectField('Groups', _t('WorkflowDefinition.GROUPS', 'Restrict to Groups'), 'Group'));
+		$fields->addFieldToTab('Root.RestrictToUsers', new TreeMultiselectField('Groups', _t('WorkflowDefinition.GROUPS', 'Restrict to Groups'), 'SilverStripe\Security\Group'));
 
         $fields->addFieldToTab('Root.RestrictToUsers', CheckboxField::create('BlockInitiator', _t('WorkflowDefinition.BLOCK_INITIATOR', 'Block initiator')));
         

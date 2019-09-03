@@ -11,6 +11,8 @@ use SilverStripe\Security\PermissionProvider;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\ORM\DataObject;
 use SilverStripe\ORM\DataList;
+use SilverStripe\Security\Member;
+use SilverStripe\Security\Permission;
 
 class WorkflowService implements PermissionProvider {
 	

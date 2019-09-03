@@ -4,8 +4,16 @@
  * @todo UI/UX needs looking at for when current user has no pending and/or submitted items, (Current implementation is bog-standard <p> text)
  */
 
- use SilverStripe\Admin\ModelAdmin;
- use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
+use SilverStripe\Admin\ModelAdmin;
+use SilverStripe\Forms\GridField\GridFieldDetailForm_ItemRequest;
+use SilverStripe\View\Requirements;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\FormAction;
+use SilverStripe\Security\Member;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\Forms\GridField\GridFieldConfig_Base;
+use SilverStripe\Forms\GridField\GridFieldEditButton;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
 
 class AdvancedWorkflowAdmin extends ModelAdmin {
 
@@ -93,8 +101,8 @@ class AdvancedWorkflowAdmin extends ModelAdmin {
 		$config = new GridFieldConfig_Base();
 		$config->addComponent(new GridFieldEditButton());
 		$config->addComponent(new GridFieldDetailForm());
-		$config->getComponentByType('GridFieldPaginator')->setItemsPerPage(5);
-		$columns = $config->getComponentByType('GridFieldDataColumns');
+		$config->getComponentByType('\SilverStripe\Forms\GridField\GridFieldPaginator')->setItemsPerPage(5);
+		$columns = $config->getComponentByType('\SilverStripe\Forms\GridField\GridFieldDataColumns');
 		$columns->setFieldFormatting($this->setFieldFormatting($config));
 
 		if($pending->count()) {
@@ -148,16 +156,16 @@ class AdvancedWorkflowAdmin extends ModelAdmin {
 		
 		$grid = $form->Fields()->dataFieldByName('WorkflowDefinition');
 		if ($grid) {
-			$grid->getConfig()->getComponentByType('GridFieldDetailForm')->setItemEditFormCallback(function ($form) {
+			$grid->getConfig()->getComponentByType('\SilverStripe\Forms\GridField\GridFieldDetailForm')->setItemEditFormCallback(function ($form) {
 				$record = $form->getRecord();
 				if ($record) {
 					$record->updateAdminActions($form->Actions());
 				}
 			});
 			
-			$grid->getConfig()->getComponentByType('GridFieldDetailForm')->setItemRequestClass('WorkflowDefinitionItemRequestClass');
+			$grid->getConfig()->getComponentByType('\SilverStripe\Forms\GridField\GridFieldDetailForm')->setItemRequestClass('WorkflowDefinitionItemRequestClass');
 			$grid->getConfig()->addComponent(new GridFieldExportAction());
-			$grid->getConfig()->removeComponentsByType('GridFieldExportButton');
+			$grid->getConfig()->removeComponentsByType('\SilverStripe\Forms\GridField\GridFieldExportButton');
 		}
 		
 		return $form;

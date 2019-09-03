@@ -8,6 +8,9 @@
 
 use SilverStripe\Forms\FormField;
 use SilverStripe\View\ArrayData;
+use SilverStripe\View\Requirements;
+use SilverStripe\ORM\ArrayList;
+use SilverStripe\Core\ClassInfo;
 
 class WorkflowField extends FormField {
 
@@ -73,8 +76,8 @@ class WorkflowField extends FormField {
 	}
 
 	public function FieldHolder($properties = array()) {
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery/jquery.js');
-		Requirements::javascript(THIRDPARTY_DIR . '/jquery-entwine/dist/jquery.entwine-dist.js');
+		Requirements::javascript('silverstripe/admin:thirdparty/jquery/jquery.js');
+		Requirements::javascript('silverstripe/admin:thirdparty/jquery-entwine/dist/jquery.entwine-dist.js');
 		Requirements::javascript(ADVANCED_WORKFLOW_DIR . '/javascript/WorkflowField.js');
 		Requirements::css(ADVANCED_WORKFLOW_DIR . '/css/WorkflowField.css');
 
